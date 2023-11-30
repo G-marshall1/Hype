@@ -14,7 +14,14 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Add more fields as needed
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true, // Ensure the email field follows the email format
+    },
+  },
 });
 
 module.exports = User;
