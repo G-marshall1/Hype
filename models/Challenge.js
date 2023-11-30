@@ -12,7 +12,14 @@ const Challenge = sequelize.define('Challenge', {
   description: {
     type: DataTypes.TEXT,
   },
-  // Add more fields as needed
+  startDate: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  endDate: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
 });
 
 module.exports = Challenge;

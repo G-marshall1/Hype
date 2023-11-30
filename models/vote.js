@@ -5,8 +5,15 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 });
 
 const Vote = sequelize.define('Vote', {
-  // Define fields for votes (e.g., userId, videoId)
-  // Add more fields as needed
+  // Define fields for votes
+  voteType: {
+    type: DataTypes.ENUM('upvote', 'downvote'), // You can customize the vote types as needed
+    allowNull: false,
+  },
 });
+
+// Define associations
+Vote.belongsTo(User);
+Vote.belongsTo(Video);
 
 module.exports = Vote;

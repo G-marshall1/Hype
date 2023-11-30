@@ -16,7 +16,10 @@ const Video = sequelize.define('Video', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Add more fields as needed
+  uploadDate: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
 });
 
 module.exports = Video;
