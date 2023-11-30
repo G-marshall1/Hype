@@ -1,0 +1,17 @@
+{{> layout}}
+
+<section>
+  <h2>Past Winning Videos</h2>
+  {{#if videos.length}}
+    <ul>
+      {{#each videos}}
+        <li>
+          <strong>{{this.title}}</strong> - Uploaded by {{this.User.username}}
+          <!-- Add more details about the video as needed -->
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No past winning videos available.</p>
+  {{/if}}
+</section>

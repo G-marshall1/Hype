@@ -1,0 +1,24 @@
+{{> layout}}
+
+<section>
+  <h2>Vote for Weekly Challenges</h2>
+
+  {{#if challenges.length}}
+    <ul>
+      {{#each challenges}}
+        <li>
+          <h3>{{this.title}}</h3>
+          <p>{{this.description}}</p>
+          
+          <!-- Vote Form -->
+          <form action="/vote" method="post">
+            <input type="hidden" name="challengeId" value="{{this.id}}">
+            <button type="submit">Vote</button>
+          </form>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No weekly challenges available for voting.</p>
+  {{/if}}
+</section>
