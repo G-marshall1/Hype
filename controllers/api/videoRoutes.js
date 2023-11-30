@@ -20,8 +20,14 @@ router.get('/', async (req, res) => {
 // Route to handle video submission form
 router.post('/submit', async (req, res) => {
   try {
-    // Handle video submission logic here
-    // For example, create a new video record in the database
+    const { userId, videoUrl } = req.body; // Assuming you have form fields for userId and videoUrl
+
+    // Create a new video record in the database
+    const newVideo = await Video.create({
+      userId,
+      videoUrl,
+      // Add other fields as needed
+    });
 
     // Redirect to the video submissions page
     res.redirect('/video');
@@ -34,8 +40,20 @@ router.post('/submit', async (req, res) => {
 // Route to handle voting form
 router.post('/vote', async (req, res) => {
   try {
-    // Handle voting logic here
-    // For example, update the vote count for the selected video in the database
+    const { videoId } = req.body; // Assuming you have a form field for videoId
+
+    // Retrieve the video from the database
+    const video = await Video.findByPk(videoId);
+
+    if (!video) {
+      return res.status(404).send('Video not found');
+    }
+
+    // Update the vote count for the selected video (modify this based on your database schema)
+    video.votes += 1;
+
+    // Save the updated video in the database
+    await video.save();
 
     // Redirect to the video submissions page
     res.redirect('/video');
