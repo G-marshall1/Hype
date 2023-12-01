@@ -7,7 +7,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 const Vote = sequelize.define('Vote', {
   // Define fields for votes
   voteType: {
-    type: DataTypes.ENUM('upvote', 'downvote'), // You can customize the vote types as needed
+    type: DataTypes.ENUM('upvote', 'downvote'), // Can customize the vote types as needed
     allowNull: false,
   },
 });

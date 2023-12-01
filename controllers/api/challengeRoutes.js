@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { Challenge, Vote } = require('../models');
 
-// Route to render the weekly challenges page for voting
+// Route to render the weekly challenges page for voting, hopefully
 router.get('/', async (req, res) => {
   try {
-    // Fetch weekly challenges
+    // Fetch weekly challenges and stuff
     const challenges = await Challenge.findAll();
 
     res.render('vote', { challenges });
@@ -15,10 +15,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Route to handle voting for weekly challenges
+// Route to handle voting for weekly challenges, might need to be moved to a different js file
 router.post('/', async (req, res) => {
   const { challengeId } = req.body;
-  const userId = req.user.id; // Assuming you have user authentication middleware
+  const userId = req.user.id; // needs authentication code to work, might just need to be deleted
 
   try {
     // Check if the user has already voted for this challenge

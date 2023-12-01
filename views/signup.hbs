@@ -1,15 +1,22 @@
-<!-- Add signup form and content -->
+{{> layout}}
 
-<h2>Signup</h2>
+<section>
+  <h2>Signup</h2>
 
-<form action="/signup" method="post">
-  <label for="username">Username</label>
-  <input type="text" name="username" id="username" required>
+  <!-- Signup Form, need to check if repeated -->
+  <form id="signupForm" action="/signup" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
 
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
-  <label for="confirm-password">Confirm Password</label>
-  <input type="password" name="confirm-password" id="confirm-password" required>
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
 
-  <button type="submit">Signup</button>
+    <button type="submit">Signup</button>
+  </form>
+</section>
+
+<!-- Import the signup.js script -->
+<script src="/js/signup.js"></script>
