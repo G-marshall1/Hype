@@ -10,7 +10,7 @@
           <h3>{{this.title}}</h3>
           <p>{{this.description}}</p>
           
-          <!-- Vote Form -->
+          <!-- Vote Form Stuff -->
           <form action="/vote" method="post">
             <input type="hidden" name="challengeId" value="{{this.id}}">
             <button type="submit">Vote</button>
@@ -22,3 +22,6 @@
     <p>No weekly challenges available for voting.</p>
   {{/if}}
 </section>
+
+<!-- Import the script to make it work, waiting to see what will work best -->
+<script src=""></script>

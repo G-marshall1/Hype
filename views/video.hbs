@@ -3,7 +3,7 @@
 <section>
   <h2>Video Submissions</h2>
 
-  <!-- Video Submission Form -->
+  <!-- Video Submission Form Stuff -->
   <form action="/video/submit" method="post">
     <label for="title">Video Title:</label>
     <input type="text" id="title" name="title" required>
@@ -19,7 +19,7 @@
 
   <hr>
 
-  <!-- List of Video Submissions -->
+  <!-- List of Video Submissions Stuff -->
   {{#if videos.length}}
     <ul>
       {{#each videos}}
@@ -28,7 +28,7 @@
           <p>{{this.description}}</p>
           <iframe width="560" height="315" src="{{this.videoUrl}}" frameborder="0" allowfullscreen></iframe>
           
-          <!-- Vote Form -->
+          <!-- Vote Form Stuff, might need to be moved. Definetly needs to be refracted -->
           <form action="/video/vote" method="post">
             <input type="hidden" name="videoId" value="{{this.id}}">
             <button type="submit">Vote</button>
@@ -41,3 +41,5 @@
     <p>No video submissions available.</p>
   {{/if}}
 </section>
+
+<!-- needs script import to make it work -->

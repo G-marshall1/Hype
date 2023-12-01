@@ -2,18 +2,20 @@
 
 <section>
   <h2>Login</h2>
-  <!-- Add login form and content -->
 
-  <form action="/login" method="post">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" required>
+  <!-- Login Form -->
+  <form id="loginForm" action="/login" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
     <button type="submit">Login</button>
   </form>
 
   <p>Don't have an account? <a href="/signup">Sign up</a></p>
-
 </section>
+
+<!-- Include the login.js script -->
+<script src="/js/login.js"></script>

@@ -23,3 +23,5 @@ const Video = sequelize.define('Video', {
 });
 
 module.exports = Video;
+
+// needs to be checked to make sure it's getting to right db
