@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User } = require('./models');
 
 // Render the login page
 const renderLoginPage = (req, res) => {

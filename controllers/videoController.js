@@ -1,4 +1,4 @@
-const { Video, Vote, Challenge } = require('../models');
+const { Video, Vote, Challenge } = require('./models');
 
 // Render the video submission page
 const renderVideoPage = async (req, res) => {
