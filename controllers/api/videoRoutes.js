@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Video, User } = require('../models');
+const { Video, User } = require('./models');
 
 // Route to render the video submissions page
 router.get('/', async (req, res) => {

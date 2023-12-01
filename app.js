@@ -5,7 +5,8 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 const http = require('http');
 const socketIO = require('socket.io');
-const { sequelize } = require('./models');
+const { sequelize } = require('./models/index');
+const exphbs = require('express-handlebars');
 
 const app = express();
 const server = http.createServer(app);
@@ -19,9 +20,27 @@ app.use(cookieParser());
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
 
 // Handlebars Setup
-app.engine('hbs', handlebars({ extname: 'hbs' }));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // Database Connection
 sequelize.sync().then(() => {
@@ -32,6 +51,7 @@ sequelize.sync().then(() => {
 io.on('connection', (socket) => {
   console.log('Socket connected');
   // Add real-time event handling here
+
 });
 
 // Routes

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('./models');
 // might need to get some more imports, needs to be refracted 
 
 router.post('/', async (req, res) => {
