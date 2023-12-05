@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Home Page</title>
-    <!-- Add the CSS stylesheets -->
+   <link rel="styleshee" href="/public/css/styles.css">
 </head>
 <body>
 
@@ -13,9 +13,14 @@
 
 <div class="container">
     <div class="profile-box">
-        <img src="{{ userProfile.picture }}" alt="Profile Picture">
-        <h2>{{ userProfile.username }}</h2>
-        <p>Crowns: {{ userProfile.crowns }}</p>
+        <h2 id="userProfileUsername">{{ userProfile.username }}</h2>
+        <p id="userProfileCrowns">Crowns: {{ userProfile.crowns }}</p>
+    </div> 
+
+    <div class="redirect">
+        <h3>Where to?</h3>
+        <button onclick="window.location.href='/views/vote.hbs'">Current Gauntlet</button>
+        <button onclick="window.location.href='/views/previous.hbs'">Current Gauntlet</button>
     </div>
 
     <div class="main-content">
@@ -37,12 +42,13 @@
                     <li>{{ name }} - {{ crowns }} Crowns</li>
                 {{/each}}
             </ul>
-            <button onclick="window.location.href='/submit'">Add a submission!</button>
+            <button onclick="window.location.href='/video.hbs'">Add a submission!</button>
         </div>
     </div>
 </div>
 
 <!-- Link JavaScripts -->
+<script src="/public/js/main.js"></script>
 
 </body>
 </html>
