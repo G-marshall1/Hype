@@ -1,29 +1,29 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-const Video = sequelize.define('Video', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      len: [1, 255],
+module.exports = (sequelize) => {
+  const Video = sequelize.define('Video', {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255],
+      },
     },
-  },
-  description: {
-    type: DataTypes.TEXT,
-  },
-  videoUrl: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  uploadDate: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: Sequelize.fn('NOW'), // Set default time stuff
-  },
-}, {
-  timestamps: true, // Timestampo stuff
-});
+    description: {
+      type: DataTypes.TEXT,
+    },
+    videoUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    uploadDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+  }, {
+    timestamps: true,
+  });
 
-module.exports = Video;
-
-// needs to be checked to make sure it's getting to right db
+  return Video;
+};
