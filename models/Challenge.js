@@ -8,9 +8,13 @@ const Challenge = sequelize.define('Challenge', {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      len: [1, 255], // Ensure the title length is between 1 and 255 characters
+    },
   },
   description: {
     type: DataTypes.TEXT,
+    defaultValue: '', // Set a default value if needed
   },
   startDate: {
     type: DataTypes.DATE,
@@ -20,6 +24,21 @@ const Challenge = sequelize.define('Challenge', {
     type: DataTypes.DATE,
     allowNull: false,
   },
+}, {
+  timestamps: true, // Enable timestamps
+  indexes: [
+    {
+      unique: true,
+      fields: ['startDate'],
+    },
+    {
+      fields: ['endDate'],
+    },
+    // Add more indexes as needed
+  ],
 });
+
+// Associations (if applicable)
+// Challenge.hasMany(Vote);
 
 module.exports = Challenge;

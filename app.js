@@ -14,13 +14,15 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 // Middleware
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 // Handlebars Setup
 const hbs = exphbs.create();
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 const sess = {
   secret: 'Super secret secret',
   cookie: {
