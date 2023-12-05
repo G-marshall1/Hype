@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
-const challengeModel = require('./challenge.js');
-const userModel = require('./user.js');
-const videoModel = require('./video.js');
-const voteModel = require('./vote.js');
+const challengeModel = require('./Challenge.js');
+const userModel = require('./User.js');
+const videoModel = require('./Video.js');
+const voteModel = require('./Vote.js');
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
