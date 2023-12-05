@@ -57,6 +57,12 @@ sequelize.sync().then(() => {
     // Add real-time event handling here
   });
 
+  // Import the Video model
+  const Video = require('./models/video');
+
+  // Video model sync
+  Video.sync();
+
   // Routes
   const indexRoutes = require('./routes/index');
   const userRoutes = require('./routes/userRoutes');

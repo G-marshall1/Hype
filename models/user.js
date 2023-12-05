@@ -1,3 +1,4 @@
+console.log('Executing models/user.js');
 const { Sequelize, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
@@ -29,14 +30,9 @@ const User = sequelize.define('User', {
     },
   },
 }, {
-  timestamps: true,
-  createdAt: {
-    type: DataTypes.DATE,
-    defaultValue: Sequelize.fn('NOW'),
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    defaultValue: Sequelize.fn('NOW'),
+  timestamps: {
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
   },
 });
 

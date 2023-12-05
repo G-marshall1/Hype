@@ -1,3 +1,4 @@
+console.log('Executing models/vote.js');
 const { Sequelize, DataTypes } = require('sequelize');
 
 const Vote = sequelize.define('Vote', {

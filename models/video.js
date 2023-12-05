@@ -1,4 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
+console.log('Executing models/video.js');
+
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../models/index'); // Import the sequelize instance
 
 const Video = sequelize.define('Video', {
   title: {
@@ -18,12 +21,10 @@ const Video = sequelize.define('Video', {
   uploadDate: {
     type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: Sequelize.fn('NOW'), // Set default time stuff
+    defaultValue: DataTypes.NOW,
   },
 }, {
-  timestamps: true, // Timestampo stuff
+  timestamps: true,
 });
 
 module.exports = Video;
-
-// needs to be checked to make sure it's getting to right db
