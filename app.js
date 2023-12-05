@@ -2,27 +2,32 @@ const express = require('express');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const cookieParser = require('cookie-parser');
-const handlebars = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const path = require('path');
 const http = require('http');
 const socketIO = require('socket.io');
 const { sequelize, Challenge, User, Video, Vote } = require('./models/index');
-const exphbs = require('express-handlebars');
+const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
 // Middleware
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 // Handlebars Setup
-const hbs = exphbs.create();
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET || 'Super secret secret',
   cookie: {
     maxAge: 300000,
     httpOnly: true,
@@ -61,9 +66,20 @@ sequelize.sync().then(() => {
   app.use('/user', userRoutes);
   app.use('/video', videoRoutes);
 
+  // Error Handling Middleware
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Internal Server Error');
+  });
+
   // Server Start
   const PORT = process.env.PORT || 3000;
   server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 });
+
+// Hashing Example (for user passwords)
+const password = 'userPassword';
+const hashedPassword = bcrypt.hashSync(password, 10);
+console.log('Hashed Password:', hashedPassword);

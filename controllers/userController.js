@@ -41,7 +41,7 @@ const handleSignup = async (req, res) => {
     // Check if the username is already taken
     const existingUser = await User.findOne({ where: { username } });
     if (existingUser) {
-      return res.render('signup', { error: 'Username already taken' });
+      return res.render('signup', { error: 'Username already in use. Please choose another.' });
     }
 
     // Create a new user
