@@ -1,37 +1,38 @@
-// Add client-side JavaScript functionality here
 document.addEventListener('DOMContentLoaded', () => {
-    // Example: Fetch data from the server and update the UI
-    fetch('/api/someData')
-      .then(response => response.json())
-      .then(data => {
-        // Update the UI with the fetched data
-        console.log(data);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-    
-    // Example: Handle form submission
-    const form = document.getElementById('exampleForm');
-    if (form) {
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-  
-        // Gather form data
-        const formData = new FormData(form);
-  
-        // Example: Send form data to the server using fetch
-        fetch('/api/submitForm', {
+  const loginForm = document.querySelector('#loginForm');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+
+      try {
+        // Send login data to the server using fetch
+        const response = await fetch('/login', {
           method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response from the server
-          console.log(data);
-        })
-        .catch(error => console.error('Error submitting form:', error));
-      });
-    }
-    
-    // Add more client-side functionality as needed
-  });
-  
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+
+        if (response.ok) {
+          // Redirect to the home page or a success page
+          window.location.href = '/';
+        } else {
+          // Handle errors or display error messages
+          const responseData = await response.json();
+          console.error('Login failed:', responseData.error);
+          // Display error message to the user if needed
+        }
+      } catch (error) {
+        console.error('Error logging in:', error);
+      }
+    });
+  }
+});

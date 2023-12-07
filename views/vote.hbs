@@ -15,6 +15,9 @@
             <input type="hidden" name="challengeId" value="{{this.id}}">
             <button type="submit">Vote</button>
           </form>
+          
+          <!-- Display vote count -->
+          <span id="challenge-{{this.id}}-count">Votes: 0</span>
         </li>
       {{/each}}
     </ul>
@@ -24,4 +27,4 @@
 </section>
 
 <!-- Import the script to make it work, waiting to see what will work best -->
-<script src=""></script>
+<script src="../public/js/vote.js"></script>

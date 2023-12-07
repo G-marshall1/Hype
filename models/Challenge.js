@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const sequelize = require('../config/connection.js');
 
 module.exports = (sequelize) => {
   const Challenge = sequelize.define('Challenge', {
