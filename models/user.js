@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection.js');
 
 module.exports = (sequelize) => {
   const User = sequelize.define('User', {
