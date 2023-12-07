@@ -6,7 +6,7 @@ const voteModel = require('./Vote.js');
 const sequelize = require('../config/connection.js');
 
 // Define models
-const Challenge = challengeModel(sequelize, Sequelize);
+const Challenge = new challengeModel(sequelize, Sequelize);
 const User = userModel(sequelize, Sequelize);
 const Video = videoModel(sequelize, Sequelize);
 const Vote = voteModel(sequelize, Sequelize);

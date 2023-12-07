@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Challenge, Vote } = require('../../models/Challenge.js');
+const { Challenge, Vote } = require('../../models');
 
 // Route to render the weekly challenges page for voting, hopefully
 router.get('/', async (req, res) => {

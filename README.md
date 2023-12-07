@@ -26,15 +26,15 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 Collaborators:
 
-[Graham Marshall](https://github.com/G-marshall1) 
+-  [Graham Marshall](https://github.com/G-marshall1) 
 
-[Kwinn Korth](https://github.com/Kwinn-Korth)
+-  [Kwinn Korth](https://github.com/Kwinn-Korth)
 
-[Skyler Crawford]()
+-  [Skyler Crawford](https://github.com/Ricochet227)
 
-[Jose Melendez sandoval]()
+-  [Jose Melendez sandoval](https://github.com/josemelendez77)
 
-[Scott Rutherford](https://github.com/ScottGCode) 
+-  [Scott Rutherford](https://github.com/ScottGCode)
 
 ## License
 
@@ -91,5 +91,5 @@ Video Upload and Processing:
 
 Authentication and Authorization:
 
--  express-session and cookies for user authentication
+-  Express-session and cookies for user authentication
 -  Role-based access control for managing user permission
