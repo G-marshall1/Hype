@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 const challengeModel = require('./Challenge.js');
 const userModel = require('./User.js');
-const videoModel = require('./video.js');
-const voteModel = require('./vote.js');
+const videoModel = require('./Video.js');
+const voteModel = require('./Vote.js');
 const sequelize = require('../config/connection.js');
 
 // Define models
