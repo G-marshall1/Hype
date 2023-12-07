@@ -16,11 +16,9 @@ I value a user-friendly platform that encourages community interaction and frien
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Become a user on Hype today! Visit the website and sign up! 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+![HypeLink]()
 
 ## Credits
 
@@ -60,9 +58,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Badges
+## Built With 
 
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+![JavaScriptBadge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![ExpressBadge](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![SequelizeBadge](https://img.shields.io/badge/sequelize-323330?style=for-the-badge&logo=sequelize&logoColor=blue)
+![MySQL Badge](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![HandlebarsBadge](https://img.shields.io/badge/Handlebars.js-000?logo=handlebarsdotjs&logoColor=fff&style=for-the-badge)
 
 ## Features
 
