@@ -58,13 +58,15 @@ sequelize.sync().then(() => {
   });
 
   // Routes
-  const indexRoutes = require('./routes/index');
-  const userRoutes = require('./routes/userRoutes');
-  const videoRoutes = require('./routes/videoRoutes');
+  const indexRoutes = require('./controllers/api/index');
+  const userRoutes = require('./controllers/api/userRoutes');
+  const videoRoutes = require('./controllers/api/videoRoutes');
+  const challengeRoutes = require('./controllers/api/challengeRoutes');
 
   app.use('/', indexRoutes);
   app.use('/user', userRoutes);
   app.use('/video', videoRoutes);
+  app.use('/challenge', challengeRoutes);
 
   // Error Handling Middleware
   app.use((err, req, res, next) => {
