@@ -41,15 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-  // Error Handling Middleware
-  app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Internal Server Error');
-  });
-
-  // Server Start
-  const PORT = process.env.PORT || 3000 ;
-  server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
