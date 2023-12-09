@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../models');
+const { VideoPost, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all BlogPosts and JOIN with user data
-    const BlogPostData = await BlogPost.findAll({
+    // Get all VideoPosts and JOIN with user data
+    const VideoPostData = await VideoPost.findAll({
       include: [
         {
           model: User,
@@ -15,11 +15,11 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const blogposts = BlogPostData.map((BlogPost) => BlogPost.get({ plain: true }));
+    const videoposts = VideoPostData.map((VideoPost) => VideoPost.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      blogposts, 
+      videoposts, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -27,9 +27,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/videopost/:id', async (req, res) => {
   try {
-    const BlogPostData = await BlogPost.findByPk(req.params.id, {
+    const VideoPostData = await VideoPost.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -38,10 +38,10 @@ router.get('/blogpost/:id', async (req, res) => {
       ],
     });
 
-    const blogPost = BlogPostData.get({ plain: true });
+    const videoPost = VideoPostData.get({ plain: true });
 
-    res.render('BlogPost', {
-      ...blogPost,
+    res.render('videoPost', {
+      ...videoPost,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -56,7 +56,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: BlogPost }],
+      include: [{ model: VideoPost }],
     });
 
     const user = userData.get({ plain: true });
