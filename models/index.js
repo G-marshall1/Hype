@@ -1,12 +1,12 @@
 const User = require('./User');
-const BlogPost = require('./BlogPost');
+const VideoPost = require('./VideoPost');
 const Comment = require('./Comment');
 
-User.hasMany(BlogPost, {
+User.hasMany(VideoPost, {
     foreignKey: 'user_id'
 });
 
-BlogPost.belongsTo(User, {
+VideoPost.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
@@ -18,12 +18,12 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-BlogPost.hasMany(Comment, {
-    foreignKey: 'blog_id'
+VideoPost.hasMany(Comment, {
+    foreignKey: 'video_id'
 });
 
-Comment.belongsTo(BlogPost, {
-    foreignKey: 'blog_id'
+Comment.belongsTo(VideoPost, {
+    foreignKey: 'video_id'
 });
 
-module.exports = { User, BlogPost, Comment };
+module.exports = { User, VideoPost, Comment };
