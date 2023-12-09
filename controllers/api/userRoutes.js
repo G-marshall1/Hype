@@ -1,19 +1,9 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-
-    // Hash the password before saving it to the database
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const userData = await User.create({
-      username,
-      email,
-      password: hashedPassword, // Store the hashed password in the database
-    });
+    const userData = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -28,27 +18,28 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
-
-    const userData = await User.findOne({ where: { email } });
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
-    // Compare the provided password with the hashed password in the database
-    const validPassword = await bcrypt.compare(password, userData.password);
+    const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
+      
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 

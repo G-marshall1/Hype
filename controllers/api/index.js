@@ -1,12 +1,10 @@
 const router = require('express').Router();
-const challengeRoutes = require('./challengeRoutes');
 const userRoutes = require('./userRoutes');
-const videoRoutes = require('./videoRoutes');
+const blogPostRoutes = require('./blogPostRoutes');
+const commentRoutes = require('./commentRoutes');
 
-router.use('/challenge', challengeRoutes);
-router.use('/user', userRoutes);
-router.use('/video',videoRoutes);
+router.use('/users', userRoutes);
+router.use('/blogPosts', blogPostRoutes);
+router.use('/comments', commentRoutes);
 
 module.exports = router;
-
-
