@@ -1,5 +1,3 @@
 DROP DATABASE IF EXISTS hype_db;
 
 CREATE DATABASE hype_db;
-
-USE hype_db;
