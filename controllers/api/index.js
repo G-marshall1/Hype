@@ -5,8 +5,8 @@ const commentRoutes = require('./commentRoutes');
 const homeRoutes = require('./homeRoutes');
 
 router.use('/users', userRoutes);
-router.use('/videoPosts', videoPostRoutes);
+router.use('/videoPost', videoPostRoutes); // Removed the 's' to match the path in videoPostRoutes
 router.use('/comments', commentRoutes);
-router.use('/', homeRoutes);
+router.use('/homepage', homeRoutes);
 
 module.exports = router;
