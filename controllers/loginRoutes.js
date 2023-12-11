@@ -26,6 +26,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/homepage', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: VideoPost }],
+    });
+
+    const user = userData.get({ plain: true });
+    console.log(user);
+
+    res.render('homepage', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    console.error('Error in /homepage route:', err);
+    res.status(500).render('error', { error: err });
+  }
+});
+
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -41,14 +61,14 @@ router.get('/profile', withAuth, async (req, res) => {
       logged_in: true
     });
   } catch (err) {
-    console.error('Error in /profile route:', err);
+    console.error('Error in /homepage route:', err);
     res.status(500).render('error', { error: err });
   }
 });
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/homepage');
     return;
   }
 

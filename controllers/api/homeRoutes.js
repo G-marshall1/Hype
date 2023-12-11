@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/videopost/:id', async (req, res) => {
+router.get('/videoPost/:id', async (req, res) => {
   try {
     const VideoPostData = await VideoPost.findByPk(req.params.id, {
       include: [
