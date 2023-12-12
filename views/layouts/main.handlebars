@@ -9,14 +9,18 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+
+<body class="{{#if night_mode}}night-mode{{/if}}">
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1 class="hype">
-        <span role="img" aria-label="money">👑</span>
-        <a  href="/">HYPE Social</a>
-        <span role="img" aria-label="money">👑</span>
-      </h1>
+      <div class="hype-container">
+        <h1 class="hype jump-text">
+          <span role="img" aria-label="money">👑</span>
+          <a href="/">HYPE Social</a>
+          <span role="img" aria-label="money">👑</span>
+        </h1>
+      </div>
+      <button id="toggleNightMode">Change it up!</button>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
@@ -32,12 +36,15 @@
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 
+  
+
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
+  <script src="/js/night-mode.js"></script>
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

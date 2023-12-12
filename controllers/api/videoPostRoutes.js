@@ -37,9 +37,9 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-// router.get('/videoposts/:id', async (req, res) => {
+// router.get('/videoPosts/:id', async (req, res) => {
 //   try {
-//     console.log('Reached the GET /videopost/:id route'); // Add this line
+//     console.log('Reached the GET /videoPost/:id route'); // Add this line
 
 //     const VideoPostData = await VideoPost.findByPk(req.params.id, {
 //       include: [
