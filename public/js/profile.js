@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
   const content = document.querySelector('#content').value.trim();
 
   if (title && content) {
-    const response = await fetch(`/api/videoPosts`, {
+    const response = await fetch(`/api/videoPost`, {
       method: 'POST',
       body: JSON.stringify({ title, content }),
       headers: {
@@ -22,10 +22,12 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  if (event.target && event.target) {
+    const hasDataId = event.target.hasAttribute('data-id');
+    if (hasDataId) {
+    const id = event.target.getAttribute('data-id')
 
-    const response = await fetch(`/api/videoPosts/${id}`, {
+  const response = await fetch(`/api/videoPost/${id}`, {
       method: 'DELETE',
     });
 
@@ -35,12 +37,14 @@ const delButtonHandler = async (event) => {
       alert('Failed to delete Post');
     }
   }
+}
 };
 
 document
-  .querySelector('.new-project-form')
+  .querySelector('.form.new-project-form')
   .addEventListener('submit', newFormHandler);
 
-// document
-//   .querySelector('.project-list')
-  // .addEventListener('click', delButtonHandler);
+document
+  .querySelector('.project-list')
+  .addEventListener('click', delButtonHandler);
+
