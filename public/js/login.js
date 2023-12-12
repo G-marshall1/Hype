@@ -44,6 +44,14 @@ const signupFormHandler = async (event) => {
   }
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.getElementById('toggleNightMode');
+
+  toggleButton.addEventListener('click', function () {
+    document.body.classList.toggle('night-mode');
+  });
+});
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);

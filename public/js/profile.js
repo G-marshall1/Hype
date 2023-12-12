@@ -39,6 +39,13 @@ const delButtonHandler = async (event) => {
   }
 }
 };
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.getElementById('toggleNightMode');
+
+  toggleButton.addEventListener('click', function () {
+    document.body.classList.toggle('night-mode');
+  });
+});
 
 document
   .querySelector('.form.new-project-form')
