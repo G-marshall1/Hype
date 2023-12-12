@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
   const content = document.querySelector('#content').value.trim();
 
   if (title && content) {
-    const response = await fetch(`/api/videoPost`, {
+    const response = await fetch(`/api/videoPosts`, {
       method: 'POST',
       body: JSON.stringify({ title, content }),
       headers: {
@@ -22,12 +22,10 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target && event.target) {
-    const hasDataId = event.target.hasAttribute('data-id');
-    if (hasDataId) {
-    const id = event.target.getAttribute('data-id')
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
 
-  const response = await fetch(`/api/videoPost/${id}`, {
+    const response = await fetch(`/api/videoPosts/${id}`, {
       method: 'DELETE',
     });
 
@@ -37,21 +35,12 @@ const delButtonHandler = async (event) => {
       alert('Failed to delete Post');
     }
   }
-}
 };
-document.addEventListener('DOMContentLoaded', function () {
-  const toggleButton = document.getElementById('toggleNightMode');
-
-  toggleButton.addEventListener('click', function () {
-    document.body.classList.toggle('night-mode');
-  });
-});
 
 document
-  .querySelector('.form.new-project-form')
+  .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
-
+// document
+//   .querySelector('.project-list')
+  // .addEventListener('click', delButtonHandler);
