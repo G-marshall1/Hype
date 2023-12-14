@@ -12,6 +12,18 @@ html {
   /* 2 */
 }
 
+body.night-mode {
+  background-color: #222; /* Change the background color to a dark color */
+  color: #fff; /* Change the text color to light */
+}
+
+button#toggleNightMode {
+  border: none; /* Remove borders */
+  color: #3498db; /* Set text color to blue */
+  background-color: transparent; /* Set background to transparent */
+  cursor: pointer; /* Add pointer cursor for better UX */
+}
+
 /* Sections
    ========================================================================== */
 /**
@@ -1701,5 +1713,19 @@ form [type='radio'] {
   }
   .align-content-center-xl {
     align-content: center;
+  }
+}
+
+
+.jump-text {
+  animation: jumpAnimation 1s infinite alternate;
+}
+
+@keyframes jumpAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
   }
 }
